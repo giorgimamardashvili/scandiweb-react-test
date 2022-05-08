@@ -18,7 +18,7 @@ const options = [
     value: "JPY",
   },
   {
-    label: "$",
+    label: "A$",
     value: "AUD",
   },
   {

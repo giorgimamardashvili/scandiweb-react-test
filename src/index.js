@@ -8,9 +8,13 @@ import {
 } from "@apollo/client";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 // import "normalize.css";
 import "./index.css";
 import App from "./App";
+
+let persistor = persistStore(store);
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
@@ -58,7 +62,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </ApolloProvider>
   </React.StrictMode>,

@@ -42,21 +42,24 @@ export class CartPreview extends Component {
           <img src={cartIcon} alt="cart" />
         </CartLogo>
         {this.state.open && (
-          <CartContainer>
-            <Title>
-              <ContainerName>My bag,</ContainerName>
-              <Amount>2 items</Amount>
-            </Title>
-            <ul></ul>
-            <TotalContainer>
-              <p style={{ fontWeight: "500" }}>Total</p>
-              <span style={{ fontWeight: "700" }}>1000</span>
-            </TotalContainer>
-            <TotalContainer>
-              <Button to="/">View bag</Button>
-              <CheckOut as="div">CHECK OUT</CheckOut>
-            </TotalContainer>
-          </CartContainer>
+          <>
+            <CartContainer>
+              <Title>
+                <ContainerName>My bag,</ContainerName>
+                <Amount>2 items</Amount>
+              </Title>
+              <ul></ul>
+              <TotalContainer>
+                <p style={{ fontWeight: "500" }}>Total</p>
+                <span style={{ fontWeight: "700" }}>1000</span>
+              </TotalContainer>
+              <TotalContainer>
+                <Button to="cart">View bag</Button>
+                <CheckOut as="div">CHECK OUT</CheckOut>
+              </TotalContainer>
+            </CartContainer>
+            <Background />
+          </>
         )}
       </Container>
     );
@@ -74,6 +77,17 @@ const CartContainer = styled.div`
   position: absolute;
   padding: 20px 15px;
   right: 0;
+  z-index: 3;
+  top: 50px;
+`;
+const Background = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background: rgba(57, 55, 72, 0.22);
+  z-index: 2;
 `;
 const Title = styled.div`
   display: flex;
@@ -109,6 +123,7 @@ const CheckOut = styled(Button)`
   border: none;
   background: #5ece7b;
   color: white;
+  margin-left: 12px;
 `;
 
 export default CartPreview;
